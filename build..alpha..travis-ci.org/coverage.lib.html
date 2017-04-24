@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-timeago.js/node_modules/timeago.js/dist/timeago.min.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-timeago.js">npmtest-timeago.js (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-timeago.js/node_modules/timeago.js/dist/timeago.min.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">27.78% <small>(15 / 54)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">7.41% <small>(4 / 54)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">9.09% <small>(2 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(1 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-timeago.js/node_modules/timeago.js/dist/</a> &#187; timeago.min.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">!function(t,e){"object"==typeof module&amp;&amp;module.exports?(module.exports=e(),module.exports.default=module.exports):<span class="branch-1 cbranch-no" title="branch not covered" >t.timeago=e()}</span>("undefined"!=typeof window?<span class="branch-0 cbranch-no" title="branch not covered" >window:</span>this,function(){<span class="fstat-no" title="function not covered" >function t(t){<span class="cstat-no" title="statement not covered" ></span>return t instanceof Date?t:isNaN(t)?/^\d+$/.test(t)?new Date(e(t)):(t=(t||"").trim().replace(/\.\d+/,"").replace(/-/,"/").replace(/-/,"/").replace(/(\d)T(\d)/,"$1 $2").replace(/Z/," UTC").replace(/([\+\-]\d\d)\:?(\d\d)/," $1$2"),new Date(t)):new Date(e(t))}<span class="fstat-no" title="function not covered" ></span>function e(t){<span class="cstat-no" title="statement not covered" ></span>return parseInt(t)}<span class="fstat-no" title="function not covered" ></span>function n(t,n,r){<span class="cstat-no" title="statement not covered" ></span>n=p[n]?n:p[r]?r:"en";<span class="cstat-no" title="statement not covered" >f</span>or(var o=0,i=t&lt;0?1:0,a=t=Math.abs(t);t&gt;=h[o]&amp;&amp;o&lt;m;o++)<span class="cstat-no" title="statement not covered" >t/=h[o];<span class="cstat-no" title="statement not covered" >r</span></span>eturn t=e(t),o*=2,t&gt;(0===o?9:1)&amp;&amp;(o+=1),p[n](t,o,a)[i].replace("%s",t)}<span class="fstat-no" title="function not covered" ></span>function r(e,n){<span class="cstat-no" title="statement not covered" ></span>return((n=n?t(n):new Date)-t(e))/1e3}<span class="fstat-no" title="function not covered" ></span>function o(t){<span class="cstat-no" title="statement not covered" ></span>for(var e=1,n=0,r=Math.abs(t);t&gt;=h[n]&amp;&amp;n&lt;m;n++)<span class="cstat-no" title="statement not covered" >t/=h[n],e*=h[n];<span class="cstat-no" title="statement not covered" >r</span></span>eturn r%=e,r=r?e-r:e,Math.ceil(r)}<span class="fstat-no" title="function not covered" ></span>function i(t){<span class="cstat-no" title="statement not covered" ></span>return t.dataset.timeago?t.dataset.timeago:a(t,w)}<span class="fstat-no" title="function not covered" ></span>function a(t,e){<span class="cstat-no" title="statement not covered" ></span>return t.getAttribute?t.getAttribute(e):t.attr?t.attr(e):void 0}<span class="fstat-no" title="function not covered" ></span>function u(t,e){<span class="cstat-no" title="statement not covered" ></span>return t.setAttribute?t.setAttribute(_,e):t.attr?t.attr(_,e):void 0}<span class="fstat-no" title="function not covered" ></span>function c(t){<span class="cstat-no" title="statement not covered" ></span>return a(t,_)}<span class="fstat-no" title="function not covered" ></span>function d(t,e){<span class="cstat-no" title="statement not covered" ></span>this.nowDate=t,this.defaultLocale=e||"en"}<span class="fstat-no" title="function not covered" ></span>function f(t,e){<span class="cstat-no" title="statement not covered" ></span>return new d(t,e)}</span>var s="second_minute_hour_day_week_month_year".split("_"),l="秒_分钟_小时_天_周_月_年".split("_"),p={en:<span class="fstat-no" title="function not covered" >function(t,e){<span class="cstat-no" title="statement not covered" ></span>if(0===e)<span class="cstat-no" title="statement not covered" >return["just now","right now"];<span class="cstat-no" title="statement not covered" >v</span></span>ar n=s[parseInt(e/2)];<span class="cstat-no" title="statement not covered" >r</span>eturn t&gt;1&amp;&amp;(n+="s"),[t+" "+n+" ago","in "+t+" "+n]}</span>,zh_CN:<span class="fstat-no" title="function not covered" >function(t,e){<span class="cstat-no" title="statement not covered" ></span>if(0===e)<span class="cstat-no" title="statement not covered" >return["刚刚","片刻后"];<span class="cstat-no" title="statement not covered" >v</span></span>ar n=l[parseInt(e/2)];<span class="cstat-no" title="statement not covered" >r</span>eturn[t+n+"前",t+n+"后"]}</span>},h=[60,60,24,7,365/7/12,12],m=6,w="datetime",_="data-tid",v={};return d.prototype.doRender=<span class="fstat-no" title="function not covered" >function(t,e,i){<span class="cstat-no" title="statement not covered" ></span>var a,c=r(e,this.nowDate),d=this;<span class="cstat-no" title="statement not covered" >t</span>.innerHTML=n(c,i,this.defaultLocale),v[a=setTimeout(<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>d.doRender(t,e,i),delete v[a]}</span>,Math.min(1e3*o(c),2147483647))]=0,u(t,a)}</span>,d.prototype.format=<span class="fstat-no" title="function not covered" >function(t,e){<span class="cstat-no" title="statement not covered" ></span>return n(r(t,this.nowDate),e,this.defaultLocale)}</span>,d.prototype.render=<span class="fstat-no" title="function not covered" >function(t,e){<span class="cstat-no" title="statement not covered" ></span>void 0===t.length&amp;&amp;(t=[t]);<span class="cstat-no" title="statement not covered" >f</span>or(var n=0,r=t.length;n&lt;r;n++)<span class="cstat-no" title="statement not covered" >this.doRender(t[n],i(t[n]),e)}</span></span>,d.prototype.setLocale=<span class="fstat-no" title="function not covered" >function(t){<span class="cstat-no" title="statement not covered" ></span>this.defaultLocale=t}</span>,f.register=<span class="fstat-no" title="function not covered" >function(t,e){<span class="cstat-no" title="statement not covered" ></span>p[t]=e}</span>,f.cancel=<span class="fstat-no" title="function not covered" >function(t){<span class="cstat-no" title="statement not covered" ></span>var e;<span class="cstat-no" title="statement not covered" >i</span>f(t)<span class="cstat-no" title="statement not covered" >(e=c(t))&amp;&amp;(clearTimeout(e),delete v[e]);e</span>lse{<span class="cstat-no" title="statement not covered" >for(e in v)<span class="cstat-no" title="statement not covered" >clearTimeout(e);<span class="cstat-no" title="statement not covered" >v</span></span>={}}</span>}</span>,f});
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 24 2017 19:02:31 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
